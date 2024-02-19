@@ -1,7 +1,7 @@
 An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Generative LLM Inference
 ===
 
-This is the official code for the paper titled "[An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Generative LLM Inference](TBA)." For reproduction, please refer to [Reproduction](#reproduction). We plan to release adapted models in the future.
+This is the official code for the paper titled "[An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Generative LLM Inference](https://arxiv.org/abs/2402.10712)." For reproduction, please refer to [Reproduction](#reproduction). We plan to release adapted models in the future.
 
 ## Requirements
 * Python 3.10 or later
@@ -56,10 +56,10 @@ Adapted models will be available in HF Hub in the future. We also plan to releas
 | Approach | BLOOM-1B | BLOOM-7B | TigerBot-7B | Mistral-7B |
 | :- | :--: | :--: | :--: | :--: |
 | LAPT | TBA | TBA | TBA | TBA |
-| Random | TBA | TBA | TBA | TBA |
-| CLP | TBA | TBA | TBA | TBA |
+| Random | TBA | - | - | - |
+| CLP | TBA | - | - | - |
 | Heuristics | TBA | TBA | TBA | TBA |
-| FOCUS | TBA | TBA | TBA | TBA |
+| FOCUS | TBA | - | - | - |
 | CLP+ | TBA | TBA | TBA | TBA |
 
 
@@ -70,5 +70,12 @@ Adapted models will be available in HF Hub in the future. We also plan to releas
 ## Citation
 If you find this work useful, please cite the following:
 ```
-TBA
+@article{yamaguchi2024empirical,
+  title={An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Generative {LLM} Inference}, 
+  author={Atsuki Yamaguchi and Aline Villavicencio and Nikolaos Aletras},
+  journal={ArXiv},
+  year={2024},
+  volume={abs/2402.10712},
+  url={https://arxiv.org/abs/2402.10712}
+}
 ```
