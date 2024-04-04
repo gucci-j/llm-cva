@@ -37,3 +37,5 @@ transformers
 .coverage
 htmlcov
 lm_cache
+*upload*.py
+*upload*.sh
