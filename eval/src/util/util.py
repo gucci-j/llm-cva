@@ -39,7 +39,7 @@ def get_label_to_token_ids(
                 label_to_token_ids = {
                     "صحيح": tuple(set(tokenizer.encode("صحيح", add_special_tokens=False) + tokenizer.encode(" صحيح", add_special_tokens=False))),
                     "خطأ": tuple(set(tokenizer.encode("خطأ", add_special_tokens=False) + tokenizer.encode(" خطأ", add_special_tokens=False))),
-                    "لا شيء": tuple(set(tokenizer.encode("لا شيء", add_special_tokens=False) + tokenizer.encode(" لا شيء", add_special_tokens=False)))
+                    "لا هذا ولا ذاك": tuple(set(tokenizer.encode("لا هذا ولا ذاك", add_special_tokens=False) + tokenizer.encode(" لا هذا ولا ذاك", add_special_tokens=False)))
                 }
             else:
                 raise NotImplementedError
@@ -106,27 +106,27 @@ def postprocess_generated_texts(
                     if "Wahr" == generated_text:
                         return 0, generated_text
                     elif "Falsch" == generated_text:
-                        return 1, generated_text
-                    elif "Weder" == generated_text:
                         return 2, generated_text
+                    elif "Weder" == generated_text:
+                        return 1, generated_text
                     else:
                         raise NotImplementedError
                 elif lang_name == "swahili":
                     if "Kweli" == generated_text:
                         return 0, generated_text
                     elif "Uongo" == generated_text:
-                        return 1, generated_text
-                    elif "Wala" == generated_text:
                         return 2, generated_text
+                    elif "Wala" == generated_text:
+                        return 1, generated_text
                     else:
                         raise NotImplementedError
                 elif lang_name == "arabic":
                     if "صحيح" == generated_text:
                         return 0, generated_text
                     elif "خطأ" == generated_text:
-                        return 1, generated_text
-                    elif "لا شيء" == generated_text:
                         return 2, generated_text
+                    elif "لا هذا ولا ذاك" == generated_text:
+                        return 1, generated_text
                     else:
                         raise NotImplementedError
                 else:
