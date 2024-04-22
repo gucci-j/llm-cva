@@ -71,6 +71,9 @@ We also release some TigerBot-7B and Mistral-7B models whose output layer is ini
 | Heuristics | [de](https://huggingface.co/atsuki-yamaguchi/tigerbot-7b-base-heuristics-untied-de)/[ja](https://huggingface.co/atsuki-yamaguchi/tigerbot-7b-base-heuristics-untied-ja)/[ar](https://huggingface.co/atsuki-yamaguchi/tigerbot-7b-base-heuristics-untied-ar)/[sw](https://huggingface.co/atsuki-yamaguchi/tigerbot-7b-base-heuristics-untied-sw) | [de](https://huggingface.co/atsuki-yamaguchi/Mistral-7B-v0.1-heuristics-untied-de)/[ja](https://huggingface.co/atsuki-yamaguchi/Mistral-7B-v0.1-heuristics-untied-ja)/[ar](https://huggingface.co/atsuki-yamaguchi/Mistral-7B-v0.1-heuristics-untied-ar)/[sw](https://huggingface.co/atsuki-yamaguchi/Mistral-7B-v0.1-heuristics-untied-sw) |
 | CLP+ | [de](https://huggingface.co/atsuki-yamaguchi/tigerbot-7b-base-clpp-untied-de)/[ja](https://huggingface.co/atsuki-yamaguchi/tigerbot-7b-base-clpp-untied-ja)/[ar](https://huggingface.co/atsuki-yamaguchi/tigerbot-7b-base-clpp-untied-ar)/[sw](https://huggingface.co/atsuki-yamaguchi/tigerbot-7b-base-clpp-untied-sw) | [de](https://huggingface.co/atsuki-yamaguchi/Mistral-7B-v0.1-clpp-untied-de)/[ja](https://huggingface.co/atsuki-yamaguchi/Mistral-7B-v0.1-clpp-untied-ja)/[ar](https://huggingface.co/atsuki-yamaguchi/Mistral-7B-v0.1-clpp-untied-ar)/[sw](https://huggingface.co/atsuki-yamaguchi/Mistral-7B-v0.1-clpp-untied-sw) |
 
+### fastText weights
+Pre-trained fastText weights, used for FOCUS initialization, are uploaded with BLOOM-1B FOCUS models.
+
 ## License
 [MIT License](./LICENSE)
 
