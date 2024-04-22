@@ -84,7 +84,7 @@ Note that adapted tokenizers were obtained from the following for each language:
 * Arabic: https://huggingface.co/aubmindlab/aragpt2-base
 * Swahili: https://huggingface.co/benjamin/gpt2-wechsel-swahili 
 
-Due to the license limitation of the Arabic tokenizer, we have excluded the Arabic tokenizer from each corresponding adapted model. To use it, please make sure to download the tokenizer beforehand from the above link.
+Due to the license restriction of the Arabic tokenizer, we have excluded the Arabic tokenizer from each corresponding adapted model. To use it, please make sure to download the tokenizer beforehand from the above link.
 
 
 ## Citation
