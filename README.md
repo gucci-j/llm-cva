@@ -52,7 +52,7 @@ See [Evaluation](./eval/).
 
 ## Adapted Models
 
-**NOTE: Models will soon be released.**
+All models are available on the Hugging Face Model Hub.
 
 | Approach | BLOOM-1B | BLOOM-7B | TigerBot-7B | Mistral-7B |
 | :- | :--: | :--: | :--: | :--: |
