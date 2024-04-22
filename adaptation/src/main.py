@@ -9,7 +9,9 @@ from core import (CLPEmbeddingInitializer,
                   FOCUSEmbeddingInitializer,
                   HeuristicsEmbeddingInitializer,
                   RandomEmbeddingInitializer,
-                  UnusedEmbeddingTokenizerPruner)
+                  UnusedEmbeddingTokenizerPruner,
+                  CLPPlusEmbeddingInitializerUntied,
+                  HeuristicsEmbeddingInitializerUntied)
 
 def main(args):
     if args.initialization_method == "random":
@@ -64,23 +66,42 @@ def main(args):
             args.target_tokenizer_name_or_path,
             cache_dir=args.cache_dir
         )
-        initializer = CLPPlusEmbeddingInitializer(
-            source_model=AutoModelForCausalLM.from_pretrained(
-                args.source_model_name_or_path,
-                cache_dir=args.cache_dir
-            ),
-            helper_model=AutoModelForCausalLM.from_pretrained(
-                args.helper_model_name_or_path,
-                cache_dir=args.cache_dir
-            ),
-            source_tokenizer=AutoTokenizer.from_pretrained(
-                args.source_tokenizer_name_or_path,
-                cache_dir=args.cache_dir
-            ),
-            target_tokenizer=target_tokenizer,
-            copy_special_tokens=args.copy_special_tokens,
-            seed=args.seed
-        )
+        if args.untied:
+            initializer = CLPPlusEmbeddingInitializerUntied(
+                source_model=AutoModelForCausalLM.from_pretrained(
+                    args.source_model_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                helper_model=AutoModelForCausalLM.from_pretrained(
+                    args.helper_model_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                source_tokenizer=AutoTokenizer.from_pretrained(
+                    args.source_tokenizer_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                target_tokenizer=target_tokenizer,
+                copy_special_tokens=args.copy_special_tokens,
+                seed=args.seed
+            )
+        else:
+            initializer = CLPPlusEmbeddingInitializer(
+                source_model=AutoModelForCausalLM.from_pretrained(
+                    args.source_model_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                helper_model=AutoModelForCausalLM.from_pretrained(
+                    args.helper_model_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                source_tokenizer=AutoTokenizer.from_pretrained(
+                    args.source_tokenizer_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                target_tokenizer=target_tokenizer,
+                copy_special_tokens=args.copy_special_tokens,
+                seed=args.seed
+            )
         target_model = initializer()
         target_model.save_pretrained(args.output_dir)
         target_tokenizer.save_pretrained(args.output_dir)
@@ -90,7 +111,44 @@ def main(args):
             args.target_tokenizer_name_or_path,
             cache_dir=args.cache_dir
         )
-        initializer = HeuristicsEmbeddingInitializer(
+        if args.untied:
+            initializer = HeuristicsEmbeddingInitializerUntied(
+                source_model=AutoModelForCausalLM.from_pretrained(
+                    args.source_model_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                source_tokenizer=AutoTokenizer.from_pretrained(
+                    args.source_tokenizer_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                target_tokenizer=target_tokenizer,
+                unicode_script_file=args.unicode_script_file_path,
+                seed=args.seed
+            )
+        else:
+            initializer = HeuristicsEmbeddingInitializer(
+                source_model=AutoModelForCausalLM.from_pretrained(
+                    args.source_model_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                source_tokenizer=AutoTokenizer.from_pretrained(
+                    args.source_tokenizer_name_or_path,
+                    cache_dir=args.cache_dir
+                ),
+                target_tokenizer=target_tokenizer,
+                unicode_script_file=args.unicode_script_file_path,
+                seed=args.seed
+            )
+        target_model = initializer()
+        target_model.save_pretrained(args.output_dir)
+        target_tokenizer.save_pretrained(args.output_dir)
+    
+    elif args.initialization_method == "focus":
+        target_tokenizer = AutoTokenizer.from_pretrained(
+            args.target_tokenizer_name_or_path,
+            cache_dir=args.cache_dir
+        )
+        initializer = FOCUSEmbeddingInitializer(
             source_model=AutoModelForCausalLM.from_pretrained(
                 args.source_model_name_or_path,
                 cache_dir=args.cache_dir
@@ -100,7 +158,7 @@ def main(args):
                 cache_dir=args.cache_dir
             ),
             target_tokenizer=target_tokenizer,
-            unicode_script_file=args.unicode_script_file_path,
+            fasttext_model=fasttext.load_model(args.fasttext_model_path),
             seed=args.seed
         )
         target_model = initializer()
@@ -147,28 +205,6 @@ def main(args):
             dataset=dataset
         )
         dataset.save_to_disk(args.output_data_dir)
-    
-    elif args.initialization_method == "focus":
-        target_tokenizer = AutoTokenizer.from_pretrained(
-            args.target_tokenizer_name_or_path,
-            cache_dir=args.cache_dir
-        )
-        initializer = FOCUSEmbeddingInitializer(
-            source_model=AutoModelForCausalLM.from_pretrained(
-                args.source_model_name_or_path,
-                cache_dir=args.cache_dir
-            ),
-            source_tokenizer=AutoTokenizer.from_pretrained(
-                args.source_tokenizer_name_or_path,
-                cache_dir=args.cache_dir
-            ),
-            target_tokenizer=target_tokenizer,
-            fasttext_model=fasttext.load_model(args.fasttext_model_path),
-            seed=args.seed
-        )
-        target_model = initializer()
-        target_model.save_pretrained(args.output_dir)
-        target_tokenizer.save_pretrained(args.output_dir)
     
     else:
         raise NotImplementedError
@@ -265,6 +301,11 @@ if __name__ == "__main__":
         type=str,
         default=None,
         help="[focus] The path to the FastText model."
+    )
+    parser.add_argument(
+        "--untied",
+        action="store_true",
+        help="[clp_plus, heuristics] Whether to apply separate initialization for an LM head. Suitable for LLaMA-style models."
     )
     args = parser.parse_args()
     main(args)

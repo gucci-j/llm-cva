@@ -218,6 +218,7 @@ class FOCUSEmbeddingInitializer:
             pad_to_multiple_of=32 # See https://github.com/huggingface/transformers/issues/26303
         )
         target_model.get_input_embeddings().weight.data = torch.from_numpy(target_embeddings)
+        target_model.tie_weights()
         logger.info(target_model.get_input_embeddings().weight.data.shape)
 
         return target_model

@@ -4,3 +4,5 @@ from .focus_init import FOCUSEmbeddingInitializer
 from .heuristics_init import HeuristicsEmbeddingInitializer
 from .prune_embedding_tokenizer import UnusedEmbeddingTokenizerPruner
 from .random_init import RandomEmbeddingInitializer
+from .clp_plus_init_untied import CLPPlusEmbeddingInitializerUntied
+from .heuristics_init_untied import HeuristicsEmbeddingInitializerUntied
