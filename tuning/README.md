@@ -4,7 +4,6 @@ Tuning (LAPT)
 ## Usage
 ```bash
 $ python src/main.py -h
-/users/acp23ay/.conda/envs/test/lib/python3.10/site-packages/bitsandbytes/libbitsandbytes_cpu.so: undefined symbol: cadam32bit_grad_fp32
 usage: main.py [-h] --dataset_path DATASET_PATH --tokenizer_name_or_path
                TOKENIZER_NAME_OR_PATH --model_name_or_path MODEL_NAME_OR_PATH
                [--cache_dir CACHE_DIR] --model_type {gpt2,bloom,llama2}

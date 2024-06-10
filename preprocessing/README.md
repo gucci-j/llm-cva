@@ -162,7 +162,7 @@ cd /path/to/llm-vocab-adaptation/preprocessing/src
 python train_fasttext.py \
     --tokenizer_name_or_path aubmindlab/aragpt2-base \
     --tokenizer_cache_dir /path/to/cache/dir \
-    --text_path /mnt/parscratch/users/acp23ay/private/datasets/ar.txt \
+    --text_path /path/to/datasets/ar.txt \
     --data_cache_dir /path/to/data/cache/dir \
     --min_length 5 \
     --target_lang ar \
