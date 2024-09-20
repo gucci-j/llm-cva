@@ -1,7 +1,7 @@
-An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Generative LLM Inference
+An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Language Model Inference
 ===
 
-This is the official code for the paper titled "[An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Generative LLM Inference](https://arxiv.org/abs/2402.10712)." For reproduction, please refer to [Reproduction](#reproduction).
+This is the official code for the paper titled "[An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Language Model Inference](https://arxiv.org/abs/2402.10712)" (EMNLP 2024 Findings). For reproduction, please refer to [Reproduction](#reproduction).
 
 ## Requirements
 * Python 3.10 or later
@@ -91,7 +91,7 @@ Due to the license restriction of the Arabic tokenizer, we have excluded the Ara
 If you find this work useful, please cite the following:
 ```
 @article{yamaguchi2024empirical,
-  title={An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Generative {LLM} Inference}, 
+  title={An Empirical Study on Cross-lingual Vocabulary Adaptation for Efficient Language Model Inference}, 
   author={Atsuki Yamaguchi and Aline Villavicencio and Nikolaos Aletras},
   journal={ArXiv},
   year={2024},
